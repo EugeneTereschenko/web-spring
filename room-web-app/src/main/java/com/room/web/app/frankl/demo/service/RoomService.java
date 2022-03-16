@@ -1,5 +1,6 @@
 package com.room.web.app.frankl.demo.service;
 
+import com.room.web.app.frankl.demo.data.RoomRepository;
 import com.room.web.app.frankl.demo.models.Room;
 import org.springframework.stereotype.Service;
 
@@ -9,13 +10,11 @@ import java.util.List;
 @Service
 public class RoomService {
 
-    private static final List<Room> rooms = new ArrayList<>();
+    private final RoomRepository roomRepository;
 
-    static {
-        for (int i=0; i<10; i++) {
-            rooms.add(new Room(i, "Room " + i, "R"+i, "Q"));
-        }
+    public RoomService(RoomRepository roomRepository) {
+        this.roomRepository = roomRepository;
     }
 
-    public List<Room> getAllRooms() {return rooms;}
+    public List<Room> getAllRooms() {return roomRepository.findAll();}
 }
