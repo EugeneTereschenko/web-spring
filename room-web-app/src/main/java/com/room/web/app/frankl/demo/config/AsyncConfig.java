@@ -35,7 +35,7 @@ public class AsyncConfig {
 
     @Bean
     public MessageListenerAdapter listenerAdapter(RoomCleanerListener listener){
-        return new MessageListenerAdapter(listener, "receiveMessager");
+        return new MessageListenerAdapter(listener, "receiveMessage");
     }
 
 /*    @Bean
